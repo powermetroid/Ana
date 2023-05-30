@@ -1,0 +1,38 @@
+Para agregar la prestación de AJAX a la aplicación y lograr obtener el montante total del stock disponible en una tienda sin recargar toda la página, puedes seguir los siguientes pasos:
+
+Asegúrate de tener incluida la biblioteca de jQuery en tu archivo clienteW2.php. Puedes hacerlo agregando el siguiente código en la sección <head> de tu archivo HTML:
+html
+Copy code
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+Agrega el botón en tu archivo clienteW2.php. Puedes utilizar el siguiente código HTML para crear el botón:
+html
+Copy code
+<button id="calcularStockButton">Calcular Stock</button>
+Agrega el código JavaScript para manejar el evento click del botón y realizar la solicitud AJAX. Puedes utilizar el siguiente código:
+html
+Copy code
+<script>
+$(document).ready(function() {
+  // Asignar una función al evento click del botón
+  $('#calcularStockButton').click(function() {
+    // Realizar la solicitud AJAX
+    $.ajax({
+      url: 'tu_servicio_soap.php', // Reemplaza 'tu_servicio_soap.php' con la URL del servicio SOAP
+      method: 'POST',
+      data: {
+        // Si es necesario, puedes enviar parámetros adicionales al servicio SOAP aquí
+      },
+      success: function(response) {
+        // Procesar la respuesta del servicio SOAP
+        var montanteTotalStock = response; // Suponiendo que la respuesta del servicio contiene el montante total del stock disponible
+        alert('Montante total del stock: ' + montanteTotalStock);
+      },
+      error: function() {
+        alert('Error al obtener el montante total del stock');
+      }
+    });
+  });
+});
+</script>
+Asegúrate de reemplazar 'tu_servicio_soap.php' con la URL correcta del servicio SOAP en el atributo url de la función $.ajax(). Esto asegurará que la solicitud AJAX se envíe al servicio correcto.
+Una vez que hayas realizado estos pasos, al hacer clic en el botón "Calcular Stock" en tu archivo clienteW2.php, se enviará una solicitud AJAX al servicio SOAP y se obtendrá el montante total del stock disponible. La respuesta del servicio se procesará en la función success y se mostrará en un mensaje de alerta.
