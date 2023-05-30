@@ -21,3 +21,10 @@ $server->register('miFuncionSOAP');
 $server->service(file_get_contents("php://input"));
 ?>
 
+En este ejemplo, se utiliza la librería NuSOAP para implementar el servidor SOAP en PHP. Asegúrate de descargar y ubicar la librería nusoap.php en la misma carpeta que el archivo PHP donde se encuentra esta función.
+
+La función miFuncionSOAP recibe dos parámetros ($parametro1 y $parametro2) y realiza una operación simple, en este caso, la suma de los dos parámetros. Puedes modificar esta función según tus necesidades.
+
+El servidor SOAP se crea utilizando el objeto soap_server. Luego, se registra la función miFuncionSOAP en el servidor utilizando el método register. Por último, se procesa la petición SOAP utilizando el método service.
+
+Recuerda que este es solo un ejemplo básico para mostrar cómo crear una función SOAP en PHP. Para implementaciones más complejas o con requisitos específicos, es posible que necesites ajustar y expandir el código.
