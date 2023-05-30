@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cuestionario</title>
+</head>
+<body>
+    <h1>Cuestionario</h1>
+
+    <?php
+    // Array de preguntas y respuestas
+    $preguntas = array(
+        array(
+            'pregunta' => '¿Cuál es la capital de Francia?',
+            'respuestas' => array(
+                'a' => 'París',
+                'b' => 'Madrid',
+                'c' => 'Londres'
+            ),
+            'respuesta_correcta' => 'a'
+        ),
+        array(
+            'pregunta' => '¿En qué año se descubrió América?',
+            'respuestas' => array(
+                'a' => '1492',
+                'b' => '1776',
+                'c' => '1812'
+            ),
+            'respuesta_correcta' => 'a'
+        ),
+        array(
+            'pregunta' => '¿Cuál es el río más largo del mundo?',
+            'respuestas' => array(
+                'a' => 'Amazonas',
+                'b' => 'Nilo',
+                'c' => 'Mississippi'
+            ),
+            'respuesta_correcta' => 'b'
+        )
+    );
+
+    // Verificar si se ha enviado el formulario
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        // Inicializar el contador de respuestas correctas
+        $respuestas_correctas = 0;
+
+        // Recorrer las respuestas enviadas y verificar si son correctas
+        foreach ($preguntas as $indice => $pregunta) {
+            $respuesta_seleccionada = $_POST['respuesta_' . $indice];
+
+            if ($respuesta_seleccionada === $pregunta['respuesta_correcta']) {
+                $respuestas_correctas++;
+            }
+        }
+
+        // Mostrar el resultado
+        echo '<h2>Resultado</h2>';
+        echo '<p>Respuestas correctas: ' . $respuestas_correctas . '/' . count($preguntas) . '</p>';
+    }
+    ?>
+
+    <form method="POST">
+        <?php
+        // Mostrar las preguntas y opciones de respuesta
+        foreach ($preguntas as $indice => $pregunta) {
+            echo '<h3>' . $pregunta['pregunta'] . '</h3>';
+
+            foreach ($pregunta['respuestas'] as $opcion => $respuesta) {
+                echo '<label>';
+                echo '<input type="radio" name="respuesta_' . $indice . '" value="' . $opcion . '">';
+                echo $respuesta;
+                echo '</label>';
+                echo '<br>';
+            }
+
+            echo '<br>';
+        }
+        ?>
+
+        <input type="submit" value="Enviar respuestas">
+    </form>
+</body>
+</html>
+
+En este ejemplo, se utiliza un array $preguntas para almacenar las preguntas, opciones de respuesta y respuestas correctas. Puedes modificar este array y agregar más preguntas según tus necesidades.
+
+La página muestra las preguntas y opciones de respuesta utilizando bucles foreach. Cada opción de respuesta se muestra como un botón de radio dentro de una etiqueta <label>. El nombre de cada botón de radio se genera dinámicamente utilizando el índice de la pregunta ($indice).
+
+Cuando se envía el formulario, se verifica cada respuesta seleccionada y se cuenta el número de respuestas correctas. El resultado se muestra después de enviar el formulario.
+
