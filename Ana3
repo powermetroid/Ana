@@ -1,0 +1,21 @@
+Para agregar una nueva función al servicio SOAP que permita calcular el montante total del stock disponible en una tienda para todos los productos de todas las familias, debes seguir los siguientes pasos:
+
+1. Definir el formato de solicitud y respuesta: 
+   - La solicitud podría incluir información adicional como el identificador de la tienda.
+   - La respuesta debe contener el montante total del stock disponible.
+
+2. Actualizar el archivo WSDL (Web Services Description Language) del servicio SOAP con la nueva operación. Asegúrate de seguir la estructura adecuada para definir la operación y sus parámetros.
+
+3. Implementar la lógica del cálculo del montante total del stock disponible en la tienda:
+   - Puedes hacerlo consultando la base de datos o el sistema que almacena la información del stock.
+   - Suma el stock disponible de todos los productos de todas las familias en la tienda especificada.
+
+4. Agregar la lógica implementada a la nueva función en el código del servicio SOAP:
+   - Utiliza el lenguaje de programación y la plataforma que estés utilizando para desarrollar el servicio SOAP.
+   - Asegúrate de tomar en cuenta los parámetros de entrada necesarios y devolver el resultado adecuado.
+
+5. Publicar o actualizar el servicio SOAP con la nueva función:
+   - Si estás utilizando un servidor web, asegúrate de que el servicio esté correctamente configurado y disponible en la dirección adecuada.
+   - Si es necesario, actualiza la documentación del servicio para incluir la nueva función.
+
+Una vez que hayas completado estos pasos, el servicio SOAP tendrá una nueva función que permitirá calcular el montante total del stock disponible en una tienda para todos los productos de todas las familias. Los clientes del servicio podrán llamar a esta función y recibir el resultado correspondiente.
