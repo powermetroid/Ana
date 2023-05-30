@@ -1,1 +1,23 @@
-HOLA PABLO.
+<?php
+// Incluir la librería SOAP
+require_once('lib/nusoap.php');
+
+// Definir la función SOAP
+function miFuncionSOAP($parametro1, $parametro2) {
+    // Realizar las operaciones que desees con los parámetros recibidos
+    $resultado = $parametro1 + $parametro2;
+    
+    // Retornar el resultado
+    return $resultado;
+}
+
+// Crear el objeto del servidor SOAP
+$server = new soap_server();
+
+// Registrar la función SOAP en el servidor
+$server->register('miFuncionSOAP');
+
+// Procesar la petición SOAP
+$server->service(file_get_contents("php://input"));
+?>
+
